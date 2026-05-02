@@ -24,19 +24,21 @@
 
 <style>
   :root {
-    --bg: #f8fafc;
+    --bg: #f0f4ff;
     --surface: #ffffff;
-    --surface2: #f1f5f9;
-    --border: #e2e8f0;
-    --border2: #cbd5e1;
-    --accent: #2563eb;
-    --accent2: #0891b2;
-    --green: #059669;
-    --red: #dc2626;
-    --yellow: #d97706;
-    --text: #0f172a;
-    --text2: #334155;
-    --muted: #64748b;
+    --surface2: #e8eeff;
+    --border: #c7d2fe;
+    --border2: #a5b4fc;
+    --accent: #4f46e5;
+    --accent2: #0ea5e9;
+    --green: #16a34a;
+    --red: #e11d48;
+    --yellow: #f59e0b;
+    --orange: #ea580c;
+    --purple: #7c3aed;
+    --text: #1e1b4b;
+    --text2: #312e81;
+    --muted: #6366f1;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
     --font-body: 'Inter', 'Segoe UI', sans-serif;
   }
@@ -47,64 +49,65 @@
     background: var(--bg);
     color: var(--text);
     font-family: var(--font-body);
-    font-size: 13px;
+    font-size: 12px;
     min-height: 100vh;
   }
 
   /* ── Header ── */
   .header {
-    background: #ffffff;
-    border-bottom: 2px solid var(--border);
-    padding: 16px 32px;
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #0ea5e9 100%);
+    border-bottom: none;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 20px rgba(79,70,229,0.3);
   }
 
   .header-left h1 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    color: var(--text);
+    color: #ffffff;
     letter-spacing: -0.5px;
   }
 
   .header-left h1 span {
-    color: var(--accent);
+    color: #bfdbfe;
   }
 
   .header-left p {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 2px;
+    font-size: 10px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 1px;
   }
 
   .header-stats {
     display: flex;
-    gap: 12px;
+    gap: 8px;
   }
 
   .stat-pill {
-    background: var(--surface2);
-    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 8px;
-    padding: 6px 16px;
+    padding: 5px 12px;
     text-align: center;
+    backdrop-filter: blur(4px);
   }
 
   .stat-pill .val {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
-    color: var(--accent);
+    color: #ffffff;
     font-family: var(--font-mono);
   }
 
   .stat-pill .lbl {
     font-size: 9px;
-    color: var(--muted);
+    color: rgba(255,255,255,0.7);
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -112,25 +115,25 @@
   /* ── Filter Panel ── */
   .filter-panel {
     background: #ffffff;
-    border-bottom: 1px solid var(--border);
-    padding: 14px 32px;
+    border-bottom: 2px solid var(--border);
+    padding: 8px 20px;
   }
 
   .filter-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 6px;
     align-items: end;
   }
 
   .filter-group label {
     display: block;
-    font-size: 10px;
-    color: var(--muted);
+    font-size: 9px;
+    color: #4f46e5;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 4px;
-    font-weight: 600;
+    margin-bottom: 2px;
+    font-weight: 700;
   }
 
   .filter-group input,
@@ -140,8 +143,8 @@
     border: 1px solid var(--border2);
     border-radius: 6px;
     color: var(--text);
-    padding: 7px 10px;
-    font-size: 12px;
+    padding: 4px 7px;
+    font-size: 11px;
     font-family: var(--font-body);
     transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
@@ -150,7 +153,7 @@
   .filter-group input:focus,
   .filter-group select:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.08);
+    box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
   }
 
   .filter-group select option {
@@ -159,27 +162,27 @@
   }
 
   .btn-reset {
-    background: #ffffff;
-    border: 1px solid var(--border2);
+    background: #4f46e5;
+    border: none;
     border-radius: 6px;
-    color: var(--muted);
-    padding: 7px 14px;
+    color: #ffffff;
+    padding: 4px 12px;
     cursor: pointer;
     font-size: 11px;
+    font-weight: 600;
     transition: all 0.2s;
-    height: 33px;
+    height: 27px;
     align-self: end;
   }
 
   .btn-reset:hover {
-    border-color: var(--red);
-    color: var(--red);
-    background: #fef2f2;
+    background: #e11d48;
+    transform: scale(1.03);
   }
 
   /* ── Table wrapper ── */
   .table-wrapper {
-    padding: 20px 32px;
+    padding: 10px 16px;
     overflow-x: auto;
   }
 
@@ -187,20 +190,21 @@
     width: 100% !important;
     border-collapse: collapse;
     background: #ffffff;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 12px rgba(79,70,229,0.08);
+    table-layout: auto;
   }
 
   table.dataTable thead th {
-    background: #f8fafc !important;
-    color: #475569 !important;
-    font-size: 10px !important;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+    color: #e0e7ff !important;
+    font-size: 9px !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    padding: 10px 10px !important;
-    border-bottom: 2px solid var(--border) !important;
+    letter-spacing: 0.6px !important;
+    padding: 7px 6px !important;
+    border-bottom: none !important;
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
@@ -208,31 +212,31 @@
   }
 
   table.dataTable thead th:hover {
-    color: var(--accent) !important;
-    background: #eff6ff !important;
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #6d28d9, #4f46e5) !important;
   }
 
   table.dataTable tbody tr {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #e0e7ff;
     transition: background 0.12s;
   }
 
   table.dataTable tbody tr:hover {
-    background: #f0f7ff !important;
+    background: #eef2ff !important;
   }
 
   table.dataTable tbody tr:nth-child(even) {
-    background: #fafbfc;
+    background: #f8f7ff;
   }
 
   table.dataTable tbody tr:nth-child(even):hover {
-    background: #f0f7ff !important;
+    background: #eef2ff !important;
   }
 
   table.dataTable tbody td {
-    padding: 9px 10px !important;
-    font-size: 12px;
-    color: var(--text2);
+    padding: 5px 6px !important;
+    font-size: 11px;
+    color: #312e81;
     white-space: nowrap;
     font-family: var(--font-mono);
   }
@@ -242,25 +246,25 @@
   .dataTables_wrapper .dataTables_filter,
   .dataTables_wrapper .dataTables_info,
   .dataTables_wrapper .dataTables_paginate {
-    color: var(--muted) !important;
+    color: #4f46e5 !important;
     font-size: 11px;
   }
 
   .dataTables_wrapper .dataTables_filter input {
-    background: #ffffff;
-    border: 1px solid var(--border2);
+    background: #f0f0ff;
+    border: 1px solid #a5b4fc;
     border-radius: 6px;
-    color: var(--text);
-    padding: 5px 10px;
+    color: #1e1b4b;
+    padding: 4px 10px;
     margin-left: 6px;
     outline: none;
   }
 
   .dataTables_wrapper .dataTables_length select {
-    background: #ffffff;
-    border: 1px solid var(--border2);
+    background: #f0f0ff;
+    border: 1px solid #a5b4fc;
     border-radius: 6px;
-    color: var(--text);
+    color: #1e1b4b;
     padding: 3px 8px;
   }
 
@@ -272,7 +276,7 @@
 
   .dataTables_wrapper .dataTables_paginate .paginate_button.current,
   .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background: var(--accent) !important;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
     color: white !important;
     border: none !important;
   }
@@ -285,17 +289,18 @@
   }
 
   /* ── Cell classes ── */
-  td.pos { color: #059669 !important; font-weight: 600; }
-  td.neg { color: #dc2626 !important; font-weight: 600; }
+  td.pos { color: #16a34a !important; font-weight: 700; }
+  td.neg { color: #e11d48 !important; font-weight: 700; }
 
   .ticker-chip {
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 5px;
-    padding: 2px 7px;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    border: none;
+    border-radius: 4px;
+    padding: 2px 6px;
     font-weight: 700;
-    color: #1d4ed8;
-    font-size: 11px;
+    color: #ffffff;
+    font-size: 10px;
+    letter-spacing: 0.3px;
   }
 
   .evt-badge {
@@ -305,21 +310,21 @@
     font-weight: 600;
     text-transform: uppercase;
   }
-  .evt-results  { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
-  .evt-dividend { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .evt-results  { background: #ddd6fe; color: #4c1d95; border: none; font-size: 9px; }
+  .evt-dividend { background: #d1fae5; color: #064e3b; border: none; font-size: 9px; }
 
-  .gap-up   { color: #059669; font-weight: 700; }
-  .gap-down { color: #dc2626; font-weight: 700; }
+  .gap-up   { color: #16a34a; font-weight: 800; }
+  .gap-down { color: #e11d48; font-weight: 800; }
 
-  .s-buy    { color: #059669; font-weight: 700; }
-  .s-watch  { color: #d97706; font-weight: 700; }
-  .s-failed { color: #dc2626; font-weight: 700; }
-  .s-none   { color: #94a3b8; }
+  .s-buy    { color: #16a34a; font-weight: 800; }
+  .s-watch  { color: #ea580c; font-weight: 800; }
+  .s-failed { color: #e11d48; font-weight: 800; }
+  .s-none   { color: #a5b4fc; }
 
   .rank-cell {
-    color: var(--muted) !important;
-    font-size: 11px;
-    font-weight: 600;
+    color: #7c3aed !important;
+    font-size: 10px;
+    font-weight: 800;
   }
 
   .signal {
@@ -330,11 +335,11 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
-  .sig-strong-buy { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
-  .sig-buy        { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-  .sig-watch      { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
-  .sig-neutral    { background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; }
-  .sig-avoid      { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+  .sig-strong-buy { background: #16a34a; color: #ffffff; border: none; box-shadow: 0 2px 6px rgba(22,163,74,0.4); }
+  .sig-buy        { background: #22c55e; color: #ffffff; border: none; }
+  .sig-watch      { background: #f97316; color: #ffffff; border: none; }
+  .sig-neutral    { background: #a5b4fc; color: #1e1b4b; border: none; }
+  .sig-avoid      { background: #e11d48; color: #ffffff; border: none; }
 
   /* Rank score bar */
   .score-bar-wrap { position: relative; }
@@ -355,35 +360,33 @@
   .tv-link {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    background: #f0fdf4;
-    border: 1px solid #86efac;
-    border-radius: 5px;
-    padding: 3px 9px;
-    font-size: 11px;
-    font-weight: 600;
-    color: #15803d;
+    gap: 3px;
+    background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+    border: none;
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #ffffff;
     text-decoration: none;
     white-space: nowrap;
     transition: all 0.15s;
     font-family: var(--font-body);
   }
   .tv-link:hover {
-    background: #15803d;
-    color: #ffffff;
-    border-color: #15803d;
-    box-shadow: 0 2px 6px rgba(21,128,61,0.25);
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    box-shadow: 0 2px 8px rgba(79,70,229,0.35);
     transform: translateY(-1px);
   }
 
   /* Footer */
   .footer {
     text-align: center;
-    padding: 20px;
-    color: var(--muted);
-    font-size: 11px;
-    border-top: 1px solid var(--border);
-    background: #ffffff;
+    padding: 10px;
+    color: #6366f1;
+    font-size: 10px;
+    border-top: 2px solid var(--border);
+    background: #f0f4ff;
   }
 </style>
 </head>
@@ -400,15 +403,15 @@
       <div class="lbl">Total Events</div>
     </div>
     <div class="stat-pill">
-      <div class="val" id="gap-up-count" style="color:var(--green)">—</div>
+      <div class="val" id="gap-up-count" style="color:#6ee7b7">—</div>
       <div class="lbl">Gap-Up</div>
     </div>
     <div class="stat-pill">
-      <div class="val" id="buy-count" style="color:var(--accent2)">—</div>
+      <div class="val" id="buy-count" style="color:#7dd3fc">—</div>
       <div class="lbl">BUY Signals</div>
     </div>
     <div class="stat-pill">
-      <div class="val" id="strong-buy-count" style="color:#34d399">—</div>
+      <div class="val" id="strong-buy-count" style="color:#86efac">—</div>
       <div class="lbl">Strong Buy</div>
     </div>
   </div>
@@ -522,9 +525,9 @@
   <td class="rank-cell">#1</td>
   <td><span class="ticker-chip">SEJALLTD</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="pos">5.00%</td>
   <td class="pos">5.00%</td>
   <td class="pos">15.39%</td>
@@ -542,9 +545,9 @@
   <td class="rank-cell">#2</td>
   <td><span class="ticker-chip">PLASTIBLEN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">3.29%</td>
   <td class="pos">14.82%</td>
   <td class="pos">6.07%</td>
@@ -562,9 +565,9 @@
   <td class="rank-cell">#3</td>
   <td><span class="ticker-chip">KIRLPNU</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">8.29%</td>
   <td class="pos">5.31%</td>
   <td class="pos">3.80%</td>
@@ -582,9 +585,9 @@
   <td class="rank-cell">#4</td>
   <td><span class="ticker-chip">MWL</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">1.01%</td>
   <td class="pos">9.33%</td>
   <td class="">—%</td>
@@ -602,9 +605,9 @@
   <td class="rank-cell">#4</td>
   <td><span class="ticker-chip">MWL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">1.01%</td>
   <td class="pos">9.33%</td>
   <td class="">—%</td>
@@ -622,9 +625,9 @@
   <td class="rank-cell">#6</td>
   <td><span class="ticker-chip">ATGL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">1.40%</td>
   <td class="pos">2.87%</td>
   <td class="neg">-0.14%</td>
@@ -642,9 +645,9 @@
   <td class="rank-cell">#7</td>
   <td><span class="ticker-chip">VBL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">5.79%</td>
   <td class="neg">-0.06%</td>
   <td class="neg">-0.90%</td>
@@ -662,9 +665,9 @@
   <td class="rank-cell">#8</td>
   <td><span class="ticker-chip">PANACHE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">4.84%</td>
   <td class="pos">4.99%</td>
   <td class="">—%</td>
@@ -682,9 +685,9 @@
   <td class="rank-cell">#9</td>
   <td><span class="ticker-chip">PSB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">3.46%</td>
   <td class="neg">-2.41%</td>
   <td class="neg">-3.00%</td>
@@ -702,9 +705,9 @@
   <td class="rank-cell">#10</td>
   <td><span class="ticker-chip">FEDERALBNK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-2.01%</td>
   <td class="pos">0.77%</td>
   <td class="">—%</td>
@@ -722,9 +725,9 @@
   <td class="rank-cell">#10</td>
   <td><span class="ticker-chip">HSCL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">2.50%</td>
   <td class="pos">5.59%</td>
   <td class="pos">6.56%</td>
@@ -742,9 +745,9 @@
   <td class="rank-cell">#12</td>
   <td><span class="ticker-chip">VSSL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">7.44%</td>
   <td class="neg">-3.82%</td>
   <td class="">—%</td>
@@ -762,9 +765,9 @@
   <td class="rank-cell">#13</td>
   <td><span class="ticker-chip">CEMPRO</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-0.10%</td>
   <td class="pos">20.00%</td>
   <td class="">—%</td>
@@ -782,9 +785,9 @@
   <td class="rank-cell">#14</td>
   <td><span class="ticker-chip">EMMVEE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">3.24%</td>
   <td class="pos">6.82%</td>
   <td class="">—%</td>
@@ -802,9 +805,9 @@
   <td class="rank-cell">#15</td>
   <td><span class="ticker-chip">GEOJITFSL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-2.75%</td>
   <td class="pos">0.56%</td>
   <td class="">—%</td>
@@ -822,9 +825,9 @@
   <td class="rank-cell">#16</td>
   <td><span class="ticker-chip">MSUMI</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-4.53%</td>
   <td class="pos">0.76%</td>
   <td class="">—%</td>
@@ -842,9 +845,9 @@
   <td class="rank-cell">#17</td>
   <td><span class="ticker-chip">IIFL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">2.05%</td>
   <td class="pos">2.66%</td>
   <td class="">—%</td>
@@ -862,9 +865,9 @@
   <td class="rank-cell">#17</td>
   <td><span class="ticker-chip">TMB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">8.97%</td>
   <td class="pos">5.92%</td>
   <td class="pos">6.07%</td>
@@ -882,9 +885,9 @@
   <td class="rank-cell">#19</td>
   <td><span class="ticker-chip">NEWGEN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">5.33%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -902,9 +905,9 @@
   <td class="rank-cell">#20</td>
   <td><span class="ticker-chip">AGI</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">1.56%</td>
   <td class="pos">19.06%</td>
   <td class="pos">12.23%</td>
@@ -922,9 +925,9 @@
   <td class="rank-cell">#21</td>
   <td><span class="ticker-chip">ABSLAMC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">2.70%</td>
   <td class="pos">1.93%</td>
   <td class="pos">1.80%</td>
@@ -942,9 +945,9 @@
   <td class="rank-cell">#22</td>
   <td><span class="ticker-chip">FABTECH</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">5.19%</td>
   <td class="pos">6.39%</td>
   <td class="pos">3.91%</td>
@@ -962,9 +965,9 @@
   <td class="rank-cell">#22</td>
   <td><span class="ticker-chip">IBULLSLTD</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">5.84%</td>
   <td class="pos">9.98%</td>
   <td class="">—%</td>
@@ -982,9 +985,9 @@
   <td class="rank-cell">#22</td>
   <td><span class="ticker-chip">NAM-INDIA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">1.06%</td>
   <td class="pos">3.39%</td>
   <td class="pos">2.05%</td>
@@ -1002,9 +1005,9 @@
   <td class="rank-cell">#22</td>
   <td><span class="ticker-chip">FABTECH</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">5.19%</td>
   <td class="pos">6.39%</td>
   <td class="pos">3.91%</td>
@@ -1022,9 +1025,9 @@
   <td class="rank-cell">#26</td>
   <td><span class="ticker-chip">CAPITALSFB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">2.81%</td>
   <td class="pos">2.93%</td>
   <td class="">—%</td>
@@ -1042,9 +1045,9 @@
   <td class="rank-cell">#26</td>
   <td><span class="ticker-chip">CAPITALSFB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">2.81%</td>
   <td class="pos">2.93%</td>
   <td class="">—%</td>
@@ -1062,9 +1065,9 @@
   <td class="rank-cell">#28</td>
   <td><span class="ticker-chip">SILVERTUC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">1.37%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1082,9 +1085,9 @@
   <td class="rank-cell">#28</td>
   <td><span class="ticker-chip">M&MFIN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.89%</td>
   <td class="pos">7.91%</td>
   <td class="pos">8.76%</td>
@@ -1102,9 +1105,9 @@
   <td class="rank-cell">#30</td>
   <td><span class="ticker-chip">TIPSMUSIC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">8.02%</td>
   <td class="pos">2.69%</td>
   <td class="pos">1.72%</td>
@@ -1122,9 +1125,9 @@
   <td class="rank-cell">#31</td>
   <td><span class="ticker-chip">MASFIN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">2.28%</td>
   <td class="pos">4.30%</td>
   <td class="">—%</td>
@@ -1142,9 +1145,9 @@
   <td class="rank-cell">#32</td>
   <td><span class="ticker-chip">ADANIPOWER</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-1.82%</td>
   <td class="pos">1.17%</td>
   <td class="">—%</td>
@@ -1162,9 +1165,9 @@
   <td class="rank-cell">#33</td>
   <td><span class="ticker-chip">ACUTAAS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">3.66%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1182,9 +1185,9 @@
   <td class="rank-cell">#33</td>
   <td><span class="ticker-chip">RBLBANK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="pos">2.86%</td>
   <td class="neg">-2.68%</td>
   <td class="pos">6.16%</td>
@@ -1202,9 +1205,9 @@
   <td class="rank-cell">#35</td>
   <td><span class="ticker-chip">MOTILALOFS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">0.29%</td>
   <td class="pos">1.95%</td>
   <td class="">—%</td>
@@ -1222,9 +1225,9 @@
   <td class="rank-cell">#36</td>
   <td><span class="ticker-chip">GREENPLY</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">2.69%</td>
   <td class="pos">11.73%</td>
   <td class="">—%</td>
@@ -1242,9 +1245,9 @@
   <td class="rank-cell">#37</td>
   <td><span class="ticker-chip">JAGSNPHARM</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">2.24%</td>
   <td class="pos">0.92%</td>
   <td class="pos">3.29%</td>
@@ -1262,9 +1265,9 @@
   <td class="rank-cell">#38</td>
   <td><span class="ticker-chip">BAJFINANCE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">0.69%</td>
   <td class="pos">0.75%</td>
   <td class="">—%</td>
@@ -1282,9 +1285,9 @@
   <td class="rank-cell">#39</td>
   <td><span class="ticker-chip">ADANIENSOL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="neg">-0.50%</td>
   <td class="pos">3.72%</td>
   <td class="pos">5.45%</td>
@@ -1302,9 +1305,9 @@
   <td class="rank-cell">#40</td>
   <td><span class="ticker-chip">CUB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">3.31%</td>
   <td class="pos">1.64%</td>
   <td class="neg">-0.41%</td>
@@ -1322,9 +1325,9 @@
   <td class="rank-cell">#41</td>
   <td><span class="ticker-chip">KSHITIJPOL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="">0.00%</td>
   <td class="pos">2.46%</td>
   <td class="pos">9.82%</td>
@@ -1342,9 +1345,9 @@
   <td class="rank-cell">#42</td>
   <td><span class="ticker-chip">COALINDIA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="neg">-0.77%</td>
   <td class="pos">3.20%</td>
   <td class="pos">6.40%</td>
@@ -1362,9 +1365,9 @@
   <td class="rank-cell">#43</td>
   <td><span class="ticker-chip">HFCL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">8.34%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1382,9 +1385,9 @@
   <td class="rank-cell">#43</td>
   <td><span class="ticker-chip">HFCL</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">8.34%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1402,9 +1405,9 @@
   <td class="rank-cell">#45</td>
   <td><span class="ticker-chip">NAVINFLUOR</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">1.98%</td>
   <td class="pos">0.92%</td>
   <td class="">—%</td>
@@ -1422,9 +1425,9 @@
   <td class="rank-cell">#46</td>
   <td><span class="ticker-chip">GLFL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">1.98%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1442,9 +1445,9 @@
   <td class="rank-cell">#47</td>
   <td><span class="ticker-chip">TANLA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-2.93%</td>
   <td class="pos">20.00%</td>
   <td class="pos">11.15%</td>
@@ -1462,9 +1465,9 @@
   <td class="rank-cell">#48</td>
   <td><span class="ticker-chip">IDFCFIRSTB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.88%</td>
   <td class="pos">4.52%</td>
   <td class="pos">4.34%</td>
@@ -1482,9 +1485,9 @@
   <td class="rank-cell">#48</td>
   <td><span class="ticker-chip">IDFCFIRSTB</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.88%</td>
   <td class="pos">4.52%</td>
   <td class="pos">4.34%</td>
@@ -1502,9 +1505,9 @@
   <td class="rank-cell">#50</td>
   <td><span class="ticker-chip">CGCL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">1.36%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1522,9 +1525,9 @@
   <td class="rank-cell">#51</td>
   <td><span class="ticker-chip">RALLIS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">1.87%</td>
   <td class="pos">0.07%</td>
   <td class="pos">1.78%</td>
@@ -1542,9 +1545,9 @@
   <td class="rank-cell">#51</td>
   <td><span class="ticker-chip">GRSE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">0.84%</td>
   <td class="pos">6.87%</td>
   <td class="">—%</td>
@@ -1562,9 +1565,9 @@
   <td class="rank-cell">#53</td>
   <td><span class="ticker-chip">HINDZINC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.61%</td>
   <td class="pos">6.71%</td>
   <td class="pos">4.17%</td>
@@ -1582,9 +1585,9 @@
   <td class="rank-cell">#54</td>
   <td><span class="ticker-chip">STLTECH</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">4.59%</td>
   <td class="neg">-1.15%</td>
   <td class="">—%</td>
@@ -1602,9 +1605,9 @@
   <td class="rank-cell">#55</td>
   <td><span class="ticker-chip">CALSOFT</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-0.50%</td>
   <td class="pos">19.98%</td>
   <td class="">—%</td>
@@ -1622,9 +1625,9 @@
   <td class="rank-cell">#56</td>
   <td><span class="ticker-chip">RPGLIFE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-0.75%</td>
   <td class="pos">13.03%</td>
   <td class="">—%</td>
@@ -1642,9 +1645,9 @@
   <td class="rank-cell">#57</td>
   <td><span class="ticker-chip">ADOR</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">3.30%</td>
   <td class="neg">-2.46%</td>
   <td class="">—%</td>
@@ -1662,9 +1665,9 @@
   <td class="rank-cell">#57</td>
   <td><span class="ticker-chip">PSPPROJECT</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">1.76%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1682,9 +1685,9 @@
   <td class="rank-cell">#57</td>
   <td><span class="ticker-chip">MAHLIFE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">3.91%</td>
   <td class="pos">1.37%</td>
   <td class="">—%</td>
@@ -1702,9 +1705,9 @@
   <td class="rank-cell">#57</td>
   <td><span class="ticker-chip">INDGN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-0.69%</td>
   <td class="pos">0.87%</td>
   <td class="">—%</td>
@@ -1722,9 +1725,9 @@
   <td class="rank-cell">#61</td>
   <td><span class="ticker-chip">MICEL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-2.11%</td>
   <td class="pos">0.96%</td>
   <td class="pos">9.07%</td>
@@ -1742,9 +1745,9 @@
   <td class="rank-cell">#62</td>
   <td><span class="ticker-chip">LODHA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-1.84%</td>
   <td class="pos">4.61%</td>
   <td class="pos">8.56%</td>
@@ -1762,9 +1765,9 @@
   <td class="rank-cell">#63</td>
   <td><span class="ticker-chip">SUNDRMFAST</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">0.92%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1782,9 +1785,9 @@
   <td class="rank-cell">#63</td>
   <td><span class="ticker-chip">SUNDRMFAST</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">0.92%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1802,9 +1805,9 @@
   <td class="rank-cell">#63</td>
   <td><span class="ticker-chip">IOB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">0.57%</td>
   <td class="neg">-0.48%</td>
   <td class="">—%</td>
@@ -1822,9 +1825,9 @@
   <td class="rank-cell">#66</td>
   <td><span class="ticker-chip">PHOENIXLTD</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">1.34%</td>
   <td class="neg">-2.10%</td>
   <td class="neg">-1.93%</td>
@@ -1842,9 +1845,9 @@
   <td class="rank-cell">#66</td>
   <td><span class="ticker-chip">PHOENIXLTD</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">1.34%</td>
   <td class="neg">-2.10%</td>
   <td class="neg">-1.93%</td>
@@ -1862,9 +1865,9 @@
   <td class="rank-cell">#66</td>
   <td><span class="ticker-chip">LGBBROSLTD</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-2.29%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1882,9 +1885,9 @@
   <td class="rank-cell">#69</td>
   <td><span class="ticker-chip">GHCLTEXTIL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-1.03%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1902,9 +1905,9 @@
   <td class="rank-cell">#70</td>
   <td><span class="ticker-chip">CENTRALBK</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">0.50%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1922,9 +1925,9 @@
   <td class="rank-cell">#70</td>
   <td><span class="ticker-chip">CENTRALBK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">0.50%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -1942,9 +1945,9 @@
   <td class="rank-cell">#70</td>
   <td><span class="ticker-chip">SHEKHAWATI</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="neg">-0.52%</td>
   <td class="neg">-3.22%</td>
   <td class="neg">-3.28%</td>
@@ -1962,9 +1965,9 @@
   <td class="rank-cell">#73</td>
   <td><span class="ticker-chip">INDUSINDBK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-1.44%</td>
   <td class="pos">6.16%</td>
   <td class="pos">7.76%</td>
@@ -1982,9 +1985,9 @@
   <td class="rank-cell">#73</td>
   <td><span class="ticker-chip">KFINTECH</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">2.39%</td>
   <td class="neg">-8.35%</td>
   <td class="">—%</td>
@@ -2002,9 +2005,9 @@
   <td class="rank-cell">#73</td>
   <td><span class="ticker-chip">KFINTECH</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">2.39%</td>
   <td class="neg">-8.35%</td>
   <td class="">—%</td>
@@ -2022,9 +2025,9 @@
   <td class="rank-cell">#76</td>
   <td><span class="ticker-chip">ESAFSFB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">2.09%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -2042,9 +2045,9 @@
   <td class="rank-cell">#77</td>
   <td><span class="ticker-chip">INFOBEAN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">7.45%</td>
   <td class="neg">-10.07%</td>
   <td class="">—%</td>
@@ -2062,9 +2065,9 @@
   <td class="rank-cell">#77</td>
   <td><span class="ticker-chip">INFOBEAN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">7.45%</td>
   <td class="neg">-10.07%</td>
   <td class="">—%</td>
@@ -2082,9 +2085,9 @@
   <td class="rank-cell">#79</td>
   <td><span class="ticker-chip">HUHTAMAKI</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">1.53%</td>
   <td class="neg">-1.11%</td>
   <td class="neg">-0.33%</td>
@@ -2102,9 +2105,9 @@
   <td class="rank-cell">#80</td>
   <td><span class="ticker-chip">PIRAMALFIN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="neg">-1.07%</td>
   <td class="pos">8.99%</td>
   <td class="pos">8.44%</td>
@@ -2122,9 +2125,9 @@
   <td class="rank-cell">#80</td>
   <td><span class="ticker-chip">TECHIN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="">0.00%</td>
   <td class="">0.00%</td>
   <td class="">0.00%</td>
@@ -2142,9 +2145,9 @@
   <td class="rank-cell">#80</td>
   <td><span class="ticker-chip">UCOBANK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.56%</td>
   <td class="pos">0.30%</td>
   <td class="pos">0.60%</td>
@@ -2162,9 +2165,9 @@
   <td class="rank-cell">#83</td>
   <td><span class="ticker-chip">TARACHAND</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-2.66%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -2182,9 +2185,9 @@
   <td class="rank-cell">#83</td>
   <td><span class="ticker-chip">EVEREADY</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">2.51%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -2202,9 +2205,9 @@
   <td class="rank-cell">#85</td>
   <td><span class="ticker-chip">SONACOMS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">1.26%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -2222,9 +2225,9 @@
   <td class="rank-cell">#85</td>
   <td><span class="ticker-chip">ETERNAL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-0.95%</td>
   <td class="pos">0.38%</td>
   <td class="">—%</td>
@@ -2242,9 +2245,9 @@
   <td class="rank-cell">#87</td>
   <td><span class="ticker-chip">DCBBANK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="pos">0.77%</td>
   <td class="neg">-1.27%</td>
   <td class="neg">-0.20%</td>
@@ -2262,9 +2265,9 @@
   <td class="rank-cell">#88</td>
   <td><span class="ticker-chip">GODREJAGRO</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">0.49%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -2282,9 +2285,9 @@
   <td class="rank-cell">#88</td>
   <td><span class="ticker-chip">ORIENTCEM</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-0.05%</td>
   <td class="neg">-0.11%</td>
   <td class="">—%</td>
@@ -2302,9 +2305,9 @@
   <td class="rank-cell">#88</td>
   <td><span class="ticker-chip">SAPPHIRE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-0.93%</td>
   <td class="pos">19.00%</td>
   <td class="">—%</td>
@@ -2322,9 +2325,9 @@
   <td class="rank-cell">#91</td>
   <td><span class="ticker-chip">JAYNECOIND</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-1.49%</td>
   <td class="pos">8.63%</td>
   <td class="pos">15.51%</td>
@@ -2342,9 +2345,9 @@
   <td class="rank-cell">#92</td>
   <td><span class="ticker-chip">SYNGENE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-1.84%</td>
   <td class="pos">8.21%</td>
   <td class="">—%</td>
@@ -2362,9 +2365,9 @@
   <td class="rank-cell">#93</td>
   <td><span class="ticker-chip">ASTERDM</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">0.22%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -2382,9 +2385,9 @@
   <td class="rank-cell">#94</td>
   <td><span class="ticker-chip">DHANBANK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">14.05%</td>
   <td class="neg">-4.37%</td>
   <td class="">—%</td>
@@ -2402,9 +2405,9 @@
   <td class="rank-cell">#95</td>
   <td><span class="ticker-chip">KOTYARK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">0.73%</td>
   <td class="neg">-4.17%</td>
   <td class="neg">-0.01%</td>
@@ -2422,9 +2425,9 @@
   <td class="rank-cell">#96</td>
   <td><span class="ticker-chip">SCHAEFFLER</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">1.02%</td>
   <td class="neg">-4.67%</td>
   <td class="">—%</td>
@@ -2442,9 +2445,9 @@
   <td class="rank-cell">#97</td>
   <td><span class="ticker-chip">CANFINHOME</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="pos">1.09%</td>
   <td class="pos">0.64%</td>
   <td class="neg">-4.16%</td>
@@ -2462,9 +2465,9 @@
   <td class="rank-cell">#98</td>
   <td><span class="ticker-chip">CEATLTD</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-0.52%</td>
   <td class="pos">3.08%</td>
   <td class="">—%</td>
@@ -2482,9 +2485,9 @@
   <td class="rank-cell">#99</td>
   <td><span class="ticker-chip">SANOFICONR</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">0.78%</td>
   <td class="pos">2.26%</td>
   <td class="">—%</td>
@@ -2502,9 +2505,9 @@
   <td class="rank-cell">#99</td>
   <td><span class="ticker-chip">LAURUSLABS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-0.47%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -2522,9 +2525,9 @@
   <td class="rank-cell">#101</td>
   <td><span class="ticker-chip">TTML</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">2.12%</td>
   <td class="neg">-1.41%</td>
   <td class="neg">-2.16%</td>
@@ -2542,9 +2545,9 @@
   <td class="rank-cell">#102</td>
   <td><span class="ticker-chip">TNPL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.92%</td>
   <td class="pos">4.91%</td>
   <td class="pos">6.11%</td>
@@ -2562,9 +2565,9 @@
   <td class="rank-cell">#103</td>
   <td><span class="ticker-chip">ACCELYA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">0.49%</td>
   <td class="neg">-3.59%</td>
   <td class="">—%</td>
@@ -2582,9 +2585,9 @@
   <td class="rank-cell">#104</td>
   <td><span class="ticker-chip">BAJAJHFL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">1.88%</td>
   <td class="neg">-1.87%</td>
   <td class="neg">-4.27%</td>
@@ -2602,9 +2605,9 @@
   <td class="rank-cell">#105</td>
   <td><span class="ticker-chip">GRSE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="neg">-0.95%</td>
   <td class="pos">0.84%</td>
   <td class="pos">2.78%</td>
@@ -2622,9 +2625,9 @@
   <td class="rank-cell">#105</td>
   <td><span class="ticker-chip">VAKRANGEE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">0.29%</td>
   <td class="neg">-1.85%</td>
   <td class="">—%</td>
@@ -2642,9 +2645,9 @@
   <td class="rank-cell">#107</td>
   <td><span class="ticker-chip">SMARTWORKS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-1.49%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -2662,9 +2665,9 @@
   <td class="rank-cell">#107</td>
   <td><span class="ticker-chip">ULTRACEMCO</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">0.10%</td>
   <td class="neg">-1.61%</td>
   <td class="neg">-3.53%</td>
@@ -2682,9 +2685,9 @@
   <td class="rank-cell">#109</td>
   <td><span class="ticker-chip">MPHASIS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-0.86%</td>
   <td class="pos">1.16%</td>
   <td class="">—%</td>
@@ -2702,9 +2705,9 @@
   <td class="rank-cell">#109</td>
   <td><span class="ticker-chip">SHREDIGCEM</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-2.30%</td>
   <td class="pos">0.69%</td>
   <td class="">—%</td>
@@ -2722,9 +2725,9 @@
   <td class="rank-cell">#111</td>
   <td><span class="ticker-chip">USHAMART</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-2.17%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -2742,9 +2745,9 @@
   <td class="rank-cell">#112</td>
   <td><span class="ticker-chip">BRIGHOTEL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">0.06%</td>
   <td class="neg">-0.13%</td>
   <td class="">—%</td>
@@ -2762,9 +2765,9 @@
   <td class="rank-cell">#112</td>
   <td><span class="ticker-chip">JINDALSAW</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">2.27%</td>
   <td class="neg">-1.99%</td>
   <td class="neg">-9.14%</td>
@@ -2782,9 +2785,9 @@
   <td class="rank-cell">#114</td>
   <td><span class="ticker-chip">SKIPPER</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">2.55%</td>
   <td class="neg">-0.87%</td>
   <td class="">—%</td>
@@ -2802,9 +2805,9 @@
   <td class="rank-cell">#114</td>
   <td><span class="ticker-chip">SANOFI</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">1.11%</td>
   <td class="neg">-0.99%</td>
   <td class="">—%</td>
@@ -2822,9 +2825,9 @@
   <td class="rank-cell">#116</td>
   <td><span class="ticker-chip">SBFC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-1.14%</td>
   <td class="neg">-0.01%</td>
   <td class="neg">-0.99%</td>
@@ -2842,9 +2845,9 @@
   <td class="rank-cell">#117</td>
   <td><span class="ticker-chip">CIEINDIA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="neg">-0.66%</td>
   <td class="neg">-2.43%</td>
   <td class="pos">0.21%</td>
@@ -2862,9 +2865,9 @@
   <td class="rank-cell">#117</td>
   <td><span class="ticker-chip">DIAMONDYD</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">1.03%</td>
   <td class="pos">0.54%</td>
   <td class="neg">-0.71%</td>
@@ -2882,9 +2885,9 @@
   <td class="rank-cell">#117</td>
   <td><span class="ticker-chip">MOIL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">0.47%</td>
   <td class="neg">-6.79%</td>
   <td class="">—%</td>
@@ -2902,9 +2905,9 @@
   <td class="rank-cell">#117</td>
   <td><span class="ticker-chip">ADANIGREEN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="pos">1.78%</td>
   <td class="neg">-0.49%</td>
   <td class="pos">0.73%</td>
@@ -2922,9 +2925,9 @@
   <td class="rank-cell">#121</td>
   <td><span class="ticker-chip">HEG</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-0.11%</td>
   <td class="neg">-9.47%</td>
   <td class="">—%</td>
@@ -2942,9 +2945,9 @@
   <td class="rank-cell">#121</td>
   <td><span class="ticker-chip">MINDSPACE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-0.03%</td>
   <td class="pos">0.09%</td>
   <td class="">—%</td>
@@ -2962,9 +2965,9 @@
   <td class="rank-cell">#121</td>
   <td><span class="ticker-chip">WAAREEENER</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">1.43%</td>
   <td class="neg">-10.97%</td>
   <td class="">—%</td>
@@ -2982,9 +2985,9 @@
   <td class="rank-cell">#121</td>
   <td><span class="ticker-chip">WAAREEENER</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">1.43%</td>
   <td class="neg">-10.97%</td>
   <td class="">—%</td>
@@ -3002,9 +3005,9 @@
   <td class="rank-cell">#125</td>
   <td><span class="ticker-chip">STARHEALTH</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">0.33%</td>
   <td class="pos">3.08%</td>
   <td class="">—%</td>
@@ -3022,9 +3025,9 @@
   <td class="rank-cell">#125</td>
   <td><span class="ticker-chip">NDTV</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-0.27%</td>
   <td class="neg">-3.66%</td>
   <td class="">—%</td>
@@ -3042,9 +3045,9 @@
   <td class="rank-cell">#125</td>
   <td><span class="ticker-chip">THELEELA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-1.66%</td>
   <td class="pos">1.63%</td>
   <td class="">—%</td>
@@ -3062,9 +3065,9 @@
   <td class="rank-cell">#125</td>
   <td><span class="ticker-chip">ASAL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-2.90%</td>
   <td class="pos">11.27%</td>
   <td class="pos">8.82%</td>
@@ -3082,9 +3085,9 @@
   <td class="rank-cell">#129</td>
   <td><span class="ticker-chip">ACC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-1.01%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3102,9 +3105,9 @@
   <td class="rank-cell">#129</td>
   <td><span class="ticker-chip">VEDL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">4.64%</td>
   <td class="neg">-64.90%</td>
   <td class="">—%</td>
@@ -3122,9 +3125,9 @@
   <td class="rank-cell">#131</td>
   <td><span class="ticker-chip">BANDHANBNK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-1.77%</td>
   <td class="pos">11.00%</td>
   <td class="">—%</td>
@@ -3142,9 +3145,9 @@
   <td class="rank-cell">#131</td>
   <td><span class="ticker-chip">RPEL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-4.60%</td>
   <td class="pos">0.85%</td>
   <td class="pos">3.02%</td>
@@ -3162,9 +3165,9 @@
   <td class="rank-cell">#133</td>
   <td><span class="ticker-chip">LTF</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.71%</td>
   <td class="neg">-0.78%</td>
   <td class="neg">-1.60%</td>
@@ -3182,9 +3185,9 @@
   <td class="rank-cell">#134</td>
   <td><span class="ticker-chip">BAJAJFINSV</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-0.96%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3202,9 +3205,9 @@
   <td class="rank-cell">#134</td>
   <td><span class="ticker-chip">HINDUNILVR</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-2.74%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3222,9 +3225,9 @@
   <td class="rank-cell">#136</td>
   <td><span class="ticker-chip">WEBELSOLAR</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">5.00%</td>
   <td class="pos">4.99%</td>
   <td class="neg">-4.92%</td>
@@ -3242,9 +3245,9 @@
   <td class="rank-cell">#137</td>
   <td><span class="ticker-chip">CASTROLIND</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-0.38%</td>
   <td class="pos">0.45%</td>
   <td class="">—%</td>
@@ -3262,9 +3265,9 @@
   <td class="rank-cell">#137</td>
   <td><span class="ticker-chip">UMIYA-MRO</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">2.15%</td>
   <td class="neg">-0.14%</td>
   <td class="neg">-0.89%</td>
@@ -3282,9 +3285,9 @@
   <td class="rank-cell">#137</td>
   <td><span class="ticker-chip">VINYLINDIA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-8.80%</td>
   <td class="pos">4.41%</td>
   <td class="pos">6.76%</td>
@@ -3302,9 +3305,9 @@
   <td class="rank-cell">#140</td>
   <td><span class="ticker-chip">5PAISA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-1.26%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3322,9 +3325,9 @@
   <td class="rank-cell">#141</td>
   <td><span class="ticker-chip">EQUITASBNK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-0.09%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3342,9 +3345,9 @@
   <td class="rank-cell">#141</td>
   <td><span class="ticker-chip">ATUL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.69%</td>
   <td class="pos">0.29%</td>
   <td class="pos">1.97%</td>
@@ -3362,9 +3365,9 @@
   <td class="rank-cell">#143</td>
   <td><span class="ticker-chip">JBMA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-1.18%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3382,9 +3385,9 @@
   <td class="rank-cell">#143</td>
   <td><span class="ticker-chip">JBMA</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-1.18%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3402,9 +3405,9 @@
   <td class="rank-cell">#143</td>
   <td><span class="ticker-chip">IDEAFORGE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">1.20%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3422,9 +3425,9 @@
   <td class="rank-cell">#146</td>
   <td><span class="ticker-chip">KSB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-0.68%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3442,9 +3445,9 @@
   <td class="rank-cell">#146</td>
   <td><span class="ticker-chip">IEX</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">0.91%</td>
   <td class="neg">-2.91%</td>
   <td class="neg">-0.77%</td>
@@ -3462,9 +3465,9 @@
   <td class="rank-cell">#146</td>
   <td><span class="ticker-chip">ADANIPORTS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-0.23%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3482,9 +3485,9 @@
   <td class="rank-cell">#149</td>
   <td><span class="ticker-chip">CHOLAFIN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">0.62%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3502,9 +3505,9 @@
   <td class="rank-cell">#149</td>
   <td><span class="ticker-chip">CHOLAFIN</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="pos">0.62%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3522,9 +3525,9 @@
   <td class="rank-cell">#151</td>
   <td><span class="ticker-chip">RELIANCE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-1.16%</td>
   <td class="pos">2.86%</td>
   <td class="pos">7.35%</td>
@@ -3542,9 +3545,9 @@
   <td class="rank-cell">#152</td>
   <td><span class="ticker-chip">FINOPB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">0.72%</td>
   <td class="neg">-6.06%</td>
   <td class="">—%</td>
@@ -3562,9 +3565,9 @@
   <td class="rank-cell">#153</td>
   <td><span class="ticker-chip">BANSALWIRE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">0.68%</td>
   <td class="neg">-3.01%</td>
   <td class="">—%</td>
@@ -3582,9 +3585,9 @@
   <td class="rank-cell">#154</td>
   <td><span class="ticker-chip">SURANASOL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">1.10%</td>
   <td class="neg">-1.93%</td>
   <td class="">—%</td>
@@ -3602,9 +3605,9 @@
   <td class="rank-cell">#155</td>
   <td><span class="ticker-chip">CHENNPETRO</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-3.21%</td>
   <td class="neg">-3.63%</td>
   <td class="pos">10.10%</td>
@@ -3622,9 +3625,9 @@
   <td class="rank-cell">#156</td>
   <td><span class="ticker-chip">PCBL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-2.73%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3642,9 +3645,9 @@
   <td class="rank-cell">#157</td>
   <td><span class="ticker-chip">RECLTD</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-0.60%</td>
   <td class="neg">-3.26%</td>
   <td class="">—%</td>
@@ -3662,9 +3665,9 @@
   <td class="rank-cell">#158</td>
   <td><span class="ticker-chip">ASTEC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">4.04%</td>
   <td class="neg">-3.09%</td>
   <td class="neg">-7.36%</td>
@@ -3682,9 +3685,9 @@
   <td class="rank-cell">#159</td>
   <td><span class="ticker-chip">AURUM</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">1.57%</td>
   <td class="neg">-4.92%</td>
   <td class="neg">-4.12%</td>
@@ -3702,9 +3705,9 @@
   <td class="rank-cell">#160</td>
   <td><span class="ticker-chip">IDBI</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-1.13%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3722,9 +3725,9 @@
   <td class="rank-cell">#160</td>
   <td><span class="ticker-chip">MARUTI</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-2.50%</td>
   <td class="pos">2.83%</td>
   <td class="">—%</td>
@@ -3742,9 +3745,9 @@
   <td class="rank-cell">#162</td>
   <td><span class="ticker-chip">KAJARIACER</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-3.30%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3762,9 +3765,9 @@
   <td class="rank-cell">#163</td>
   <td><span class="ticker-chip">GOCOLORS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-7.43%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3782,9 +3785,9 @@
   <td class="rank-cell">#164</td>
   <td><span class="ticker-chip">DALBHARAT</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-2.73%</td>
   <td class="pos">1.61%</td>
   <td class="">—%</td>
@@ -3802,9 +3805,9 @@
   <td class="rank-cell">#165</td>
   <td><span class="ticker-chip">KSOLVES</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-8.51%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3822,9 +3825,9 @@
   <td class="rank-cell">#165</td>
   <td><span class="ticker-chip">ADANIENT</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-0.72%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3842,9 +3845,9 @@
   <td class="rank-cell">#167</td>
   <td><span class="ticker-chip">GRANULES</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-0.09%</td>
   <td class="neg">-0.69%</td>
   <td class="">—%</td>
@@ -3862,9 +3865,9 @@
   <td class="rank-cell">#168</td>
   <td><span class="ticker-chip">RRKABEL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-3.42%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3882,9 +3885,9 @@
   <td class="rank-cell">#168</td>
   <td><span class="ticker-chip">INDIACEM</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-3.87%</td>
   <td class="pos">6.72%</td>
   <td class="neg">-1.43%</td>
@@ -3902,9 +3905,9 @@
   <td class="rank-cell">#168</td>
   <td><span class="ticker-chip">EDELWEISS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-7.82%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3922,9 +3925,9 @@
   <td class="rank-cell">#171</td>
   <td><span class="ticker-chip">SUPREMEIND</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">0.78%</td>
   <td class="neg">-1.64%</td>
   <td class="neg">-1.89%</td>
@@ -3942,9 +3945,9 @@
   <td class="rank-cell">#172</td>
   <td><span class="ticker-chip">AWL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-0.50%</td>
   <td class="neg">-2.31%</td>
   <td class="">—%</td>
@@ -3962,9 +3965,9 @@
   <td class="rank-cell">#172</td>
   <td><span class="ticker-chip">INDIAMART</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-1.28%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -3982,9 +3985,9 @@
   <td class="rank-cell">#174</td>
   <td><span class="ticker-chip">JYOTISTRUC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-4.28%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4002,9 +4005,9 @@
   <td class="rank-cell">#175</td>
   <td><span class="ticker-chip">PICCADIL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="pos">2.77%</td>
   <td class="neg">-9.44%</td>
   <td class="">—%</td>
@@ -4022,9 +4025,9 @@
   <td class="rank-cell">#176</td>
   <td><span class="ticker-chip">GODIGIT</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-1.05%</td>
   <td class="neg">-0.54%</td>
   <td class="">—%</td>
@@ -4042,9 +4045,9 @@
   <td class="rank-cell">#176</td>
   <td><span class="ticker-chip">BHAGYANGR</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-0.41%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4062,9 +4065,9 @@
   <td class="rank-cell">#178</td>
   <td><span class="ticker-chip">CRAMC</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">2.39%</td>
   <td class="neg">-4.27%</td>
   <td class="neg">-9.53%</td>
@@ -4082,9 +4085,9 @@
   <td class="rank-cell">#178</td>
   <td><span class="ticker-chip">CRAMC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">2.39%</td>
   <td class="neg">-4.27%</td>
   <td class="neg">-9.53%</td>
@@ -4102,9 +4105,9 @@
   <td class="rank-cell">#180</td>
   <td><span class="ticker-chip">TATACAP</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">0.96%</td>
   <td class="neg">-1.00%</td>
   <td class="neg">-4.35%</td>
@@ -4122,9 +4125,9 @@
   <td class="rank-cell">#180</td>
   <td><span class="ticker-chip">TATACAP</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">0.96%</td>
   <td class="neg">-1.00%</td>
   <td class="neg">-4.35%</td>
@@ -4142,9 +4145,9 @@
   <td class="rank-cell">#182</td>
   <td><span class="ticker-chip">ROSSARI</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="neg">-2.36%</td>
   <td class="neg">-6.99%</td>
   <td class="neg">-5.01%</td>
@@ -4162,9 +4165,9 @@
   <td class="rank-cell">#182</td>
   <td><span class="ticker-chip">RELTD</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">1.95%</td>
   <td class="neg">-6.00%</td>
   <td class="">—%</td>
@@ -4182,9 +4185,9 @@
   <td class="rank-cell">#184</td>
   <td><span class="ticker-chip">IFCI</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-2.18%</td>
   <td class="neg">-2.90%</td>
   <td class="">—%</td>
@@ -4202,9 +4205,9 @@
   <td class="rank-cell">#184</td>
   <td><span class="ticker-chip">FIVESTAR</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-2.12%</td>
   <td class="neg">-0.46%</td>
   <td class="">—%</td>
@@ -4222,9 +4225,9 @@
   <td class="rank-cell">#186</td>
   <td><span class="ticker-chip">HINDCOMPOS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="neg">-3.55%</td>
   <td class="pos">5.28%</td>
   <td class="pos">2.40%</td>
@@ -4242,9 +4245,9 @@
   <td class="rank-cell">#187</td>
   <td><span class="ticker-chip">BLUESTONE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">1.06%</td>
   <td class="neg">-0.16%</td>
   <td class="neg">-5.94%</td>
@@ -4262,9 +4265,9 @@
   <td class="rank-cell">#187</td>
   <td><span class="ticker-chip">SBICARD</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">0.06%</td>
   <td class="neg">-3.47%</td>
   <td class="neg">-4.00%</td>
@@ -4282,9 +4285,9 @@
   <td class="rank-cell">#187</td>
   <td><span class="ticker-chip">CHOICEIN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">1.21%</td>
   <td class="neg">-2.26%</td>
   <td class="neg">-5.56%</td>
@@ -4302,9 +4305,9 @@
   <td class="rank-cell">#190</td>
   <td><span class="ticker-chip">JSFB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-5.16%</td>
   <td class="neg">-1.72%</td>
   <td class="">—%</td>
@@ -4322,9 +4325,9 @@
   <td class="rank-cell">#190</td>
   <td><span class="ticker-chip">FEDFINA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-3.50%</td>
   <td class="neg">-1.89%</td>
   <td class="">—%</td>
@@ -4342,9 +4345,9 @@
   <td class="rank-cell">#192</td>
   <td><span class="ticker-chip">AXISBANK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.27%</td>
   <td class="neg">-3.05%</td>
   <td class="neg">-5.09%</td>
@@ -4362,9 +4365,9 @@
   <td class="rank-cell">#193</td>
   <td><span class="ticker-chip">WENDT</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-3.02%</td>
   <td class="neg">-0.93%</td>
   <td class="neg">-0.87%</td>
@@ -4382,9 +4385,9 @@
   <td class="rank-cell">#194</td>
   <td><span class="ticker-chip">NATIONALUM</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-7.85%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4402,9 +4405,9 @@
   <td class="rank-cell">#194</td>
   <td><span class="ticker-chip">NATIONALUM</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-7.85%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4422,9 +4425,9 @@
   <td class="rank-cell">#196</td>
   <td><span class="ticker-chip">MAZDOCK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-1.32%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4442,9 +4445,9 @@
   <td class="rank-cell">#197</td>
   <td><span class="ticker-chip">SIS</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-3.11%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4462,9 +4465,9 @@
   <td class="rank-cell">#198</td>
   <td><span class="ticker-chip">INDUSTOWER</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-0.95%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4482,9 +4485,9 @@
   <td class="rank-cell">#198</td>
   <td><span class="ticker-chip">INDUSTOWER</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-0.95%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4502,9 +4505,9 @@
   <td class="rank-cell">#200</td>
   <td><span class="ticker-chip">RAJOOENG</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-0.46%</td>
   <td class="neg">-15.87%</td>
   <td class="">—%</td>
@@ -4522,9 +4525,9 @@
   <td class="rank-cell">#201</td>
   <td><span class="ticker-chip">SWSOLAR</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">0.46%</td>
   <td class="neg">-2.89%</td>
   <td class="neg">-2.89%</td>
@@ -4542,9 +4545,9 @@
   <td class="rank-cell">#202</td>
   <td><span class="ticker-chip">AUBANK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="neg">-2.13%</td>
   <td class="neg">-1.94%</td>
   <td class="neg">-2.59%</td>
@@ -4562,9 +4565,9 @@
   <td class="rank-cell">#202</td>
   <td><span class="ticker-chip">INDIANB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-2.29%</td>
   <td class="neg">-2.71%</td>
   <td class="">—%</td>
@@ -4582,9 +4585,9 @@
   <td class="rank-cell">#204</td>
   <td><span class="ticker-chip">NGIL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-1.24%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4602,9 +4605,9 @@
   <td class="rank-cell">#204</td>
   <td><span class="ticker-chip">SERVOTECH</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-2.31%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4622,9 +4625,9 @@
   <td class="rank-cell">#206</td>
   <td><span class="ticker-chip">SUMMITSEC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-2.38%</td>
   <td class="neg">-3.20%</td>
   <td class="">—%</td>
@@ -4642,9 +4645,9 @@
   <td class="rank-cell">#207</td>
   <td><span class="ticker-chip">ZENSARTECH</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-5.33%</td>
   <td class="pos">2.29%</td>
   <td class="neg">-2.76%</td>
@@ -4662,9 +4665,9 @@
   <td class="rank-cell">#208</td>
   <td><span class="ticker-chip">BEPL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-3.77%</td>
   <td class="neg">-3.04%</td>
   <td class="neg">-1.99%</td>
@@ -4682,9 +4685,9 @@
   <td class="rank-cell">#209</td>
   <td><span class="ticker-chip">SHRIRAMFIN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="pos">0.20%</td>
   <td class="neg">-3.62%</td>
   <td class="neg">-5.38%</td>
@@ -4702,9 +4705,9 @@
   <td class="rank-cell">#210</td>
   <td><span class="ticker-chip">MAHLOG</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="pos">1.84%</td>
   <td class="neg">-8.26%</td>
   <td class="neg">-7.36%</td>
@@ -4722,9 +4725,9 @@
   <td class="rank-cell">#211</td>
   <td><span class="ticker-chip">AYE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">10.05%</td>
   <td class="neg">-2.25%</td>
   <td class="neg">-10.77%</td>
@@ -4742,9 +4745,9 @@
   <td class="rank-cell">#211</td>
   <td><span class="ticker-chip">FORCEMOT</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="pos">1.05%</td>
   <td class="neg">-5.15%</td>
   <td class="">—%</td>
@@ -4762,9 +4765,9 @@
   <td class="rank-cell">#211</td>
   <td><span class="ticker-chip">CCCL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-2.07%</td>
   <td class="neg">-9.66%</td>
   <td class="">—%</td>
@@ -4782,9 +4785,9 @@
   <td class="rank-cell">#214</td>
   <td><span class="ticker-chip">MHRIL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="neg">-1.84%</td>
   <td class="neg">-3.06%</td>
   <td class="neg">-2.72%</td>
@@ -4802,9 +4805,9 @@
   <td class="rank-cell">#215</td>
   <td><span class="ticker-chip">UNIECOM</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">5.74%</td>
   <td class="neg">-9.25%</td>
   <td class="neg">-14.66%</td>
@@ -4822,9 +4825,9 @@
   <td class="rank-cell">#216</td>
   <td><span class="ticker-chip">SPLPETRO</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.98%</td>
   <td class="neg">-4.87%</td>
   <td class="neg">-4.61%</td>
@@ -4842,9 +4845,9 @@
   <td class="rank-cell">#217</td>
   <td><span class="ticker-chip">MOIL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-6.79%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4862,9 +4865,9 @@
   <td class="rank-cell">#218</td>
   <td><span class="ticker-chip">PPLPHARMA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-2.55%</td>
   <td class="neg">-2.63%</td>
   <td class="">—%</td>
@@ -4882,9 +4885,9 @@
   <td class="rank-cell">#219</td>
   <td><span class="ticker-chip">SANGINITA</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-1.95%</td>
   <td class="neg">-1.99%</td>
   <td class="neg">-2.04%</td>
@@ -4902,9 +4905,9 @@
   <td class="rank-cell">#220</td>
   <td><span class="ticker-chip">AVANTEL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
   <td class="pos">1.65%</td>
   <td class="neg">-3.47%</td>
   <td class="neg">-5.08%</td>
@@ -4922,9 +4925,9 @@
   <td class="rank-cell">#221</td>
   <td><span class="ticker-chip">CANHLIFE</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-27</td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
+  <td>27 Apr</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
   <td class="neg">-2.44%</td>
   <td class="pos">7.23%</td>
   <td class="">—%</td>
@@ -4942,9 +4945,9 @@
   <td class="rank-cell">#222</td>
   <td><span class="ticker-chip">RAILTEL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-0.95%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -4962,9 +4965,9 @@
   <td class="rank-cell">#223</td>
   <td><span class="ticker-chip">MRPL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.34%</td>
   <td class="neg">-7.66%</td>
   <td class="neg">-7.03%</td>
@@ -4982,9 +4985,9 @@
   <td class="rank-cell">#224</td>
   <td><span class="ticker-chip">LTM</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="neg">-1.58%</td>
   <td class="neg">-5.50%</td>
   <td class="neg">-3.33%</td>
@@ -5002,9 +5005,9 @@
   <td class="rank-cell">#225</td>
   <td><span class="ticker-chip">LALPATHLAB</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-2.19%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -5022,9 +5025,9 @@
   <td class="rank-cell">#225</td>
   <td><span class="ticker-chip">LALPATHLAB</span></td>
   <td><span class="evt-badge evt-dividend">Dividend</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-2.19%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -5042,9 +5045,9 @@
   <td class="rank-cell">#227</td>
   <td><span class="ticker-chip">SYSTMTXC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-28</td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
+  <td>28 Apr</td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
   <td class="neg">-2.91%</td>
   <td class="neg">-4.99%</td>
   <td class="">—%</td>
@@ -5062,9 +5065,9 @@
   <td class="rank-cell">#228</td>
   <td><span class="ticker-chip">UEL</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-29</td>
-  <td>2026-04-30</td>
-  <td></td>
+  <td>29 Apr</td>
+  <td>30 Apr</td>
+  <td>—</td>
   <td class="neg">-2.23%</td>
   <td class="">—%</td>
   <td class="">—%</td>
@@ -5082,9 +5085,9 @@
   <td class="rank-cell">#229</td>
   <td><span class="ticker-chip">SAMPANN</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
-  <td>2026-04-27</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
+  <td>27 Apr</td>
   <td class="neg">-0.81%</td>
   <td class="neg">-8.23%</td>
   <td class="neg">-15.29%</td>
@@ -5102,9 +5105,9 @@
   <td class="rank-cell">#230</td>
   <td><span class="ticker-chip">CYIENT</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="neg">-2.69%</td>
   <td class="neg">-6.72%</td>
   <td class="neg">-8.27%</td>
@@ -5122,9 +5125,9 @@
   <td class="rank-cell">#231</td>
   <td><span class="ticker-chip">UTIAMC</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="neg">-2.67%</td>
   <td class="neg">-10.66%</td>
   <td class="neg">-7.06%</td>
@@ -5142,9 +5145,9 @@
   <td class="rank-cell">#232</td>
   <td><span class="ticker-chip">UNIONBANK</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="neg">-7.39%</td>
   <td class="neg">-1.51%</td>
   <td class="neg">-5.14%</td>
@@ -5162,9 +5165,9 @@
   <td class="rank-cell">#233</td>
   <td><span class="ticker-chip">KHAICHEM</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="neg">-0.08%</td>
   <td class="neg">-10.47%</td>
   <td class="neg">-13.58%</td>
@@ -5182,9 +5185,9 @@
   <td class="rank-cell">#234</td>
   <td><span class="ticker-chip">INFY</span></td>
   <td><span class="evt-badge evt-results">Results</span></td>
-  <td>2026-04-22</td>
-  <td>2026-04-23</td>
-  <td>2026-04-24</td>
+  <td>22 Apr</td>
+  <td>23 Apr</td>
+  <td>24 Apr</td>
   <td class="neg">-2.21%</td>
   <td class="neg">-6.93%</td>
   <td class="neg">-7.13%</td>
@@ -5204,7 +5207,7 @@
 </div>
 
 <div class="footer">
-  Generated 2026-05-02 20:37 · NSE Event Analysis Dashboard · Data via yfinance
+  Generated 2026-05-02 20:46 · NSE Event Analysis Dashboard · Data via yfinance
 </div>
 
 <script>
